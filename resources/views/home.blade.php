@@ -3,11 +3,7 @@
 @section('content')
 
 <h1>HOME</h1>
-
-
-        
-
-          @foreach ($posts as $post)
+@foreach ($posts as $post)
 <!-- Blog Post -->
 <div class="card mb-4">
 <img class="card-img-top" src="{{$post->post_image}}" alt="Card image cap">
@@ -22,8 +18,6 @@ Posted on {{$post->created_at->diffForHumans()}} by
 </div>
 </div>
           @endforeach
-
-
           <!-- Pagination -->
           <ul class="pagination justify-content-center mb-4">
             <li class="page-item">

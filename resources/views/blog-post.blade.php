@@ -23,8 +23,9 @@
     <hr>
 
     <!-- Preview Image -->
-    <img class="img-fluid rounded" src="{{ $post->post_image }}" alt="">
-
+    <img class="img-fluid rounded" src="{{$post->post_image}}" alt="">
+  
+    
     <hr>
 
     <!-- Post Content -->
