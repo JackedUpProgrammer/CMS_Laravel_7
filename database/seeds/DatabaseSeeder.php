@@ -1,5 +1,7 @@
 <?php
 
+use App\Post;
+use App\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -10,7 +12,14 @@ class DatabaseSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
-        // $this->call(UserSeeder::class);
+    {   
+        //post for each user
+        factory(User::class,10)->create()->each(function($user){
+            $user->posts()->save(factory(Post::class)->make());
+        });
+
+        //for post for user but not each
+        //  factory(User::class,10)->create();
+        //  factory(Post::class,10)->create();
     }
 }
