@@ -21,14 +21,14 @@ class PostController extends Controller
    public function store(){
     $inputs = request()->validate([
         'title' => 'required|min:1|max:255',    //title is the name ascpect on the form
-        'post_image' => 'file',
+        // 'post_image' => 'file',
          'body' => 'required'                    
      ]);
 
      if(request('post_image')){
         $inputs['post_image'] = request('post_image')->store('images'); //cretae folder to store photos in and get file 
      }
-
+     
      auth()->user()->posts()->create($inputs);
       return back();
      
