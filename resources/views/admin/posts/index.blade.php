@@ -58,19 +58,23 @@
                       <td>{{ $post->updated_at->diffForHumans() }}</td>
 
                       <td> 
+                        @can('update', $post)
                       <form method="POST" action="{{ route('post.destroy', $post->id) }}">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger">Delete</button>
                       </form> 
+                      @endcan
                       </td>
 
                       <td> 
+                        @can('view', $post)
                         <form method="POST" action="{{ route('post.edit', $post->id) }}">
                           @csrf
                           @method('GET')
                           <button type="submit" class="btn btn-primary">Edit</button>
                         </form> 
+                        @endcan
                         </td>
                       
                     </tr>

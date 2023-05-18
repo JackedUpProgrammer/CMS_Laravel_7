@@ -38,6 +38,9 @@ Route::get('/post/{post}', 'PostController@show')->name('blog.post');
 
     Route::get('/admin/posts/{post}/edit', 'PostController@edit')->name('post.edit');
     
+    // Route::get('/admin/posts/{post}/edit', 'PostController@edit')->middleware('can:view,post')->name('post.edit');
+    //dan is die policy klaar apply 
+    
     Route::patch('/admin/posts/{post}/update', 'PostController@update')->name('post.update');
     
   });
