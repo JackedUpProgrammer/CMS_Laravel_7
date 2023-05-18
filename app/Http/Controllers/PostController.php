@@ -22,12 +22,12 @@ class PostController extends Controller
    public function store(){
     $inputs = request()->validate([
         'title' => 'required|min:1|max:255',    //title is the name ascpect on the form
-        // 'post_image' => 'file',
+         'post_image' => 'file',
          'body' => 'required'                    
      ]);
 
      if(request('post_image')){
-        $inputs['post_image'] = request('post_image')->store('images'); //cretae folder to store photos in and get file 
+        $inputs['post_image'] = request('post_image')->store('images'); //if exists,create folder to store photos in and get file 
      }
      
      auth()->user()->posts()->create($inputs);
@@ -52,8 +52,27 @@ class PostController extends Controller
     }
 
     public function update(Post $post){
-        $post->update($request->all());
-        return back();
+        $inputs = request()->validate([
+            'title' => 'required|min:1|max:255',    //title is the name ascpect on the form
+             'post_image' => 'file',
+             'body' => 'required'                    
+         ]);
+        
+        if(request('post_image')){
+            $inputs['post_image'] = request('post_image')->store('images'); //if exists,create folder to store photos in and get file 
+            $post->post_image = $inputs['post_image']; 
+        }
+            $post->title = $inputs['title']; 
+            $post->body = $inputs['body']; 
+
+
+            // auth()->user()->posts()->save($post);
+            $post->save();
+       
+            Session::flash('updated_message', 'post was updated successfully');
+            return redirect('admin/posts');
+
+       
     }
 
 }

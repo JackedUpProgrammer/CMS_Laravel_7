@@ -6,8 +6,10 @@
     
     
     @section('form')
-    <form method="POST" action="{{ route('post.store') }}" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('post.update',$post->id) }}" enctype="multipart/form-data">
         @csrf
+        @method('PATCH')
+        {{-- patch is update --}}
         <div class="form-group">
                 <label for="title"></label>
                 <input type="text" name="title" class="form-control" id="title" aria-describedby="" value="{{ $post->title }}" placeholder="Enter title">

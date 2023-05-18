@@ -15,6 +15,12 @@
 </div>
 @endif
 
+@if (session()->has('updated_message'))
+<div class="alert alert-success">
+    {{ session('updated_message') }}
+</div>
+@endif
+
 @endsection
 
 
