@@ -3,12 +3,7 @@
 @section('content')
 <h1 class="h3 mb-0 text-gray-800">CREATE</h1>
 
-@if (session()->has('message1'))
-<div class="alert alert-success">
-    {{ session('message') }}
-</div>
-@endif
-@endsection
+
 
 @section('form')
 <form method="POST" action="{{ route('post.store') }}" enctype="multipart/form-data">
