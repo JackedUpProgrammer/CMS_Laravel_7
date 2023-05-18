@@ -37,4 +37,7 @@ Route::get('/post/{post}', 'PostController@show')->name('blog.post');
     Route::delete('/delete/posts/{post}/destroy', 'PostController@destroy')->name('post.destroy');
 
     Route::get('/admin/posts/{post}/edit', 'PostController@edit')->name('post.edit');
+    
+    Route::post('/admin/posts/{post}/update', 'PostController@update')->name('post.update');
+    
   });

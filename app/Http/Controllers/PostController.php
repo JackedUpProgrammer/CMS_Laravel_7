@@ -47,5 +47,13 @@ class PostController extends Controller
         return back();
     }
 
-}
+    public function edit(Post $post){
+        return view('admin.posts.edit')->with('post', $post);
+    }
 
+    public function update(Post $post){
+        $post->update($request->all());
+        return back();
+    }
+
+}

@@ -37,6 +37,7 @@
                       <th>Created at</th>
                       <th>Updated at</th>
                       <th>Delete</th>
+                      <th>Edit</th>
                      
                     </tr>
                   </thead>
@@ -57,6 +58,14 @@
                         <button type="submit" class="btn btn-danger">Delete</button>
                       </form> 
                       </td>
+
+                      <td> 
+                        <form method="POST" action="{{ route('post.edit', $post->id) }}">
+                          @csrf
+                          @method('GET')
+                          <button type="submit" class="btn btn-primary">Edit</button>
+                        </form> 
+                        </td>
                       
                     </tr>
                   @endforeach
