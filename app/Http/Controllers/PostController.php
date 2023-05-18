@@ -45,7 +45,7 @@ class PostController extends Controller
           $posts= Post::all();
         // $posts = auth()->user()->posts();  if you want to display background data
         //$posts = auth()->user()->posts;    if you want to display the results
-        // $posts = auth()->user()->posts;
+         //$posts = auth()->user()->posts;
         
         
         return view('admin.posts.index')->with('posts', $posts);
