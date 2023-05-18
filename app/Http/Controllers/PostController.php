@@ -6,6 +6,7 @@ use App\Post;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class PostController extends Controller
 {
@@ -30,7 +31,8 @@ class PostController extends Controller
      }
      
      auth()->user()->posts()->create($inputs);
-      return back();
+     Session::flash('created_message', 'post was created successfully');
+      return redirect('admin/posts');
      
      }
 
@@ -38,6 +40,12 @@ class PostController extends Controller
         $posts= Post::all();
         return view('admin.posts.index')->with('posts', $posts);
      }
-   
+
+     public function destroy(Post $post){
+        $post->delete();
+        Session::flash('deleted_message', 'post was deleted successfully');
+        return back();
+    }
+
 }
 

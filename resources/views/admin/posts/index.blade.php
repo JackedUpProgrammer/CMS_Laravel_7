@@ -1,7 +1,23 @@
 <x-admin-master>
 @section('content')
 <h1 class="h3 mb-0 text-gray-800">All Posts</h1>
+
+
+@if (session()->has('deleted_message'))
+<div class="alert alert-danger">
+    {{ session('deleted_message') }}
+</div>
+@endif
+
+@if (session()->has('created_message'))
+<div class="alert alert-success">
+    {{ session('created_message') }}
+</div>
+@endif
+
 @endsection
+
+
 
 @section('posts')
           <!-- DataTales Example -->
@@ -20,6 +36,7 @@
                       <th>Post image</th>
                       <th>Created at</th>
                       <th>Updated at</th>
+                      <th>Delete</th>
                      
                     </tr>
                   </thead>
@@ -32,7 +49,15 @@
                       <td><div><img height="40px" src="{{asset($post->post_image)}}" alt=""></div></td>
                       <td>{{ $post->created_at->diffForHumans() }}</td>
                       <td>{{ $post->updated_at->diffForHumans() }}</td>
-           
+
+                      <td> 
+                      <form method="POST" action="{{ route('post.destroy', $post->id) }}">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                      </form> 
+                      </td>
+                      
                     </tr>
                   @endforeach
                 </tbody>
