@@ -56,6 +56,7 @@
       </div>
       
 <x-admin-sidebar-posts-links></x-admin-sidebar-posts-links>
+<x-admin-sidebar-users-links></x-admin-sidebar-users-links>
 
       <!-- Nav Item - Utilities Collapse Menu -->
       <li class="nav-item">
@@ -302,6 +303,7 @@
           </div>
           @yield('form')
           @yield('posts')
+          @yield('users')
           <!-- Content Row -->
           <div class="row">
 
