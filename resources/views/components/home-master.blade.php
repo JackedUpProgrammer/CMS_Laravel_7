@@ -43,11 +43,20 @@
             <a class="nav-link" href="{{ route('admin.index') }}">Admin</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">logout</a>
+            <form action="/logout" method="post">
+              @csrf
+              <button class="btn btn-info">Logout</button>
+              </form>
           </li>
+
+          
           @else
           <li class="nav-item">
             <a class="nav-link" href="{{ route('login') }}">Login</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('register') }}">Register</a>
           </li>
           @endif
          

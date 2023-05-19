@@ -19,7 +19,6 @@ class PostController extends Controller
     }
 
     public function create(){
-        $this->authorize('update',$post);
         return view('admin.posts.create');
     }
   
