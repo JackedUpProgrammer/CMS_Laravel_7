@@ -39,7 +39,12 @@
                 <td>{{ $user->id ?? 'none' }}</td>
                 <td>{{ $user->username ?? 'none'}}</td>
                 <td><div><img height="40px" src="{{asset($user->avatar)}}" alt=""></div></td>
-                <td>{{ $user->name ?? 'none'}}</td>
+
+                <td><a href="{{ route('user.profile.show',$user->id) }}"> {{ $user->name ?? 'none'}}</a></td>
+                
+
+
+
                 <td>{{ ($user->created_at) ? $user->created_at->diffForHumans() : 'none' }}</td>
                 <td>{{ ($user->updated_at) ? $user->updated_at->diffForHumans() : 'none' }}</td>
 

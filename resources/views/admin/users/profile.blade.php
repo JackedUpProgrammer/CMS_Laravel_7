@@ -22,13 +22,13 @@
 
             <div class="form-group">
                 <label for="username">Username</label>
-                <input type="text" name="username" class="form-control" id="username" aria-describedby="" placeholder="username:" value="{{ auth()->user()->username }}">
+                <input type="text" name="username" class="form-control" id="username" aria-describedby="" placeholder="username:" value="{{$user->username }}">
        
             </div>
 
             <div class="form-group">
                     <label for="name">Name</label>
-                    <input type="text" name="name" class="form-control" id="name" aria-describedby="" placeholder="name:" value="{{ auth()->user()->name }}">
+                    <input type="text" name="name" class="form-control" id="name" aria-describedby="" placeholder="name:" value="{{ $user->name }}">
                     @error('name')
                     <div class="alert-danger">{{ $message }}</div>
                     @enderror
@@ -36,7 +36,7 @@
         
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" name="email" class="form-control" id="email" aria-describedby="" placeholder="email:" value="{{ auth()->user()->email }}">
+                <input type="email" name="email" class="form-control" id="email" aria-describedby="" placeholder="email:" value="{{ $user->email }}">
                 @error('email')
                 <div class="alert-danger">{{ $message }}</div>
                 @enderror
@@ -72,6 +72,7 @@
 @section('form2')
 <br>
 <br>
+
 <div class="row"></div>
     <div class="col-sm-12">
         <h1 class="h3 mb-0 text-gray-800">ROLES</h1>
@@ -90,7 +91,6 @@
               <th>id</th>
               <th>Name</th>
               <th>Slug</th>
-              <th>Name</th>
               <th>Attach</th>
               <th>Detach</th>
               
@@ -101,12 +101,32 @@
           <tbody>
           @foreach ($roles as $role)
             <tr>
-              <td><input type="checkbox" name="" id=""></td>
+              <td><input type="checkbox" name="" id="" 
+                    @foreach ($user->roles as $user_role)
+                        @if ($user_role ->slug==$role->slug)
+                            checked
+                        @endif
+                    @endforeach
+                ></td>
               <td>{{ $role->id }}</td>
               <td>{{ $role->name }}</td>
               <td>{{ $role->slug }}</td>
-              <td><button class="btn btn-primary">Attach</button></td>
-              <td><button class="btn btn-danger">Detach</button></td>
+
+                <form method="POST" action="{{ route('user.role.attach', $user) }}">
+                    @csrf
+                    @method('PUT')
+                    <input type="hidden" name="role" value="{{ $role->id }}">
+                    <td><button class="btn btn-primary">Attach</button></td>
+                </form>
+             
+
+                <form method="POST" action="{{ route('user.role.detach', $user) }}">
+                    @csrf
+                    @method('PUT')
+                    <input type="hidden" name="role" value="{{ $role->id }}">
+                    <td><button class="btn btn-danger">Detach</button></td>
+                </form>
+             
 
 
               {{-- <td> 
@@ -117,7 +137,7 @@
                     </form> 
               </td> --}}
 
-              <td> 
+              {{-- <td>  --}}
                 {{-- @can('view', $post)
                 <form method="POST" action="{{ route('post.edit', $post->id) }}">
                   @csrf
@@ -125,7 +145,7 @@
                   <button type="submit" class="btn btn-primary">Edit</button>
                 </form> 
                 @endcan --}}
-                </td>
+                {{-- </td> --}}
               
             </tr>
           @endforeach
