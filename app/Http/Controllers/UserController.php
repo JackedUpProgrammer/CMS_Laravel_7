@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
@@ -31,6 +32,12 @@ class UserController extends Controller
     public function index(){
         $users = User::all();
         return view('admin.users.index')->with('users', $users);
+    }
+
+    public function destroy(User $user){
+        $user->delete();
+        Session::flash('deleted_message', 'user was deleted successfully');
+        return back();
     }
 
     

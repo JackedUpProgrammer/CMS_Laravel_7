@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Permission;
+use Illuminate\Support\Str;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -48,7 +49,7 @@ class User extends Authenticatable
     }
 
     public function roles(){
-        return $this->belongsToMany(PeRolermission::class);
+        return $this->belongsToMany(Role::class);
     }
 
     public function setPasswordAttribute($value){
@@ -61,4 +62,14 @@ class User extends Authenticatable
         }
         return asset('storage/' . $value);
         }
+
+
+    public function userHasRole($role_name){
+        foreach($this->roles as $role){
+            if(Str::lower($role_name) == Str::lower($role->name))
+                
+                return true;
+            }return false;
+        }
+
 }

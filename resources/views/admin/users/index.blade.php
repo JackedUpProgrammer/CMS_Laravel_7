@@ -2,6 +2,12 @@
 
     @section('content')
     <h1 class="h3 mb-0 text-gray-800">users</h1>
+
+    @if (session()->has('deleted_message'))
+    <div class="alert alert-danger">
+        {{ session('deleted_message') }}
+    </div>
+    @endif
     @endsection
     
     
@@ -30,20 +36,19 @@
             <tbody>
             @foreach ($users as $user)
               <tr>
-                <td>{{ $user->id }}</td>
-                <td>{{ $user->username}}</td>
+                <td>{{ $user->id ?? 'none' }}</td>
+                <td>{{ $user->username ?? 'none'}}</td>
                 <td><div><img height="40px" src="{{asset($user->avatar)}}" alt=""></div></td>
-                <td>{{ $user->created_at->diffForHumans() }}</td>
-                <td>{{ $user->updated_at->diffForHumans() }}</td>
+                <td>{{ $user->name ?? 'none'}}</td>
+                <td>{{ ($user->created_at) ? $user->created_at->diffForHumans() : 'none' }}</td>
+                <td>{{ ($user->updated_at) ? $user->updated_at->diffForHumans() : 'none' }}</td>
 
                 <td> 
-                  {{-- @can('update', $post)
-                <form method="POST" action="{{ route('post.destroy', $post->id) }}">
-                  @csrf
-                  @method('DELETE')
-                  <button type="submit" class="btn btn-danger">Delete</button>
-                </form> 
-                @endcan --}}
+                    <form method="POST" action="{{ route('user.destroy', $user->id) }}">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                      </form> 
                 </td>
 
                 <td> 
