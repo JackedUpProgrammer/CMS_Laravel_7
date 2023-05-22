@@ -63,7 +63,89 @@
             <button type="submit" class="btn btn-primary">Submit</button>
         
         </form>
+
     </div>
+</div>
+@endsection
+
+
+@section('form2')
+<br>
+<br>
+<div class="row"></div>
+    <div class="col-sm-12">
+        <h1 class="h3 mb-0 text-gray-800">ROLES</h1>
+        
+  <!-- DataTales Example -->
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">All Roles</h6>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-responsive table table-bordered" id="ROLESTable" width="100%" cellspacing="0">
+          <thead>
+            <tr>
+                <th>Options</th>
+              <th>id</th>
+              <th>Name</th>
+              <th>Slug</th>
+              <th>Name</th>
+              <th>Attach</th>
+              <th>Detach</th>
+              
+           
+             
+            </tr>
+          </thead>
+          <tbody>
+          @foreach ($roles as $role)
+            <tr>
+              <td><input type="checkbox" name="" id=""></td>
+              <td>{{ $role->id }}</td>
+              <td>{{ $role->name }}</td>
+              <td>{{ $role->slug }}</td>
+              <td><button class="btn btn-primary">Attach</button></td>
+              <td><button class="btn btn-danger">Detach</button></td>
+
+
+              {{-- <td> 
+                  <form method="POST" action="{{ route('user.destroy', $user->id) }}">
+                      @csrf
+                      @method('DELETE')
+                      <button type="submit" class="btn btn-danger">Delete</button>
+                    </form> 
+              </td> --}}
+
+              <td> 
+                {{-- @can('view', $post)
+                <form method="POST" action="{{ route('post.edit', $post->id) }}">
+                  @csrf
+                  @method('GET')
+                  <button type="submit" class="btn btn-primary">Edit</button>
+                </form> 
+                @endcan --}}
+                </td>
+              
+            </tr>
+          @endforeach
+        </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+ 
+
+
+
+
+
+
+
+
+    </div>
+       
+</div>
 @endsection
 
 
