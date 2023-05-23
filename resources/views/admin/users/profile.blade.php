@@ -116,7 +116,11 @@
                     @csrf
                     @method('PUT')
                     <input type="hidden" name="role" value="{{ $role->id }}">
-                    <td><button class="btn btn-primary">Attach</button></td>
+                    <td><button class="btn btn-primary"
+                        {{-- to make sure we can get double entry error --}}
+                        @if($user->roles->contains($role))
+                            disabled
+                    @endif>Attach</button></td>
                 </form>
              
 

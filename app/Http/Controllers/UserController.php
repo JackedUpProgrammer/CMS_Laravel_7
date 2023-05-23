@@ -28,7 +28,7 @@ class UserController extends Controller
        }
 
        $user->update($inputs);
-       return back();
+       return redirect('/admin/users');
     }
 
     public function index(){
