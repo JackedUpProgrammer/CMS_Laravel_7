@@ -34,6 +34,28 @@ class PostPolicy
         return $user->id === $post->user_id;
     }
 
+
+     /**
+     * Determine whether the user can view the model.
+     *
+     * @param  \App\User  $user
+     * @param  \App\User  $model
+     * @return mixed
+     */
+    public function viewAdminOrUser(User $user, Post $post)
+    {
+           if ($user->userHasRole('Admin')){ 
+            return true;}
+            else{
+            return $user->id === $post->user_id;}
+       
+    }
+
+
+
+
+
+
     /**
      * Determine whether the user can create models.
      *
@@ -56,7 +78,11 @@ class PostPolicy
     public function update(User $user, Post $post)
     {
         //
-        return $user->id === $post->user_id;
+        if ($user->userHasRole('Admin')){ 
+            return true;}
+            else{
+            return $user->id === $post->user_id;}
+       
     }
 
     /**

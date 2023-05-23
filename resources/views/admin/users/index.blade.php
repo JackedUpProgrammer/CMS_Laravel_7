@@ -39,7 +39,7 @@
                 <td>{{ $user->id ?? 'none' }}</td>
                 <td>{{ $user->username ?? 'none'}}</td>
                 <td><div><img height="40px" src="{{asset($user->avatar)}}" alt=""></div></td>
-
+                
                 <td><a href="{{ route('user.profile.show',$user->id) }}"> {{ $user->name ?? 'none'}}</a></td>
                 
 
@@ -65,7 +65,7 @@
                   </form> 
                   @endcan --}}
                   </td>
-                
+                  
               </tr>
             @endforeach
           </tbody>

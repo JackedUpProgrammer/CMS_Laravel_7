@@ -15,6 +15,6 @@
   });
 
 
-  Route::middleware(['auth', 'can:view,user'])->group(function(){
-    Route::get('/users/{user}/profile', 'UserController@show')->name('user.profile.show');
+  Route::middleware(['auth'])->group(function(){
+  Route::get('/users/{user}/profile', 'UserController@show')->name('user.profile.show');
   });

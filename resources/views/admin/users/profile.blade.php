@@ -6,8 +6,13 @@
 
 
 @section('form')
+
 <div class="row"></div>
     <div class="col-sm-6">
+     
+      {{-- @can('viewAdmin', $user)
+      @can('view', $user) --}}
+      @can('viewAdminOrUser', $user)
         <form method="POST" action="{{ route('user.profile.update', $user->id) }}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
@@ -63,7 +68,9 @@
             <button type="submit" class="btn btn-primary">Submit</button>
         
         </form>
-
+        @endcan
+        {{-- @endcan --}}
+       
     </div>
 </div>
 @endsection
@@ -72,7 +79,7 @@
 @section('form2')
 <br>
 <br>
-
+@can('viewAdmin', $user)
 <div class="row"></div>
     <div class="col-sm-12">
         <h1 class="h3 mb-0 text-gray-800">ROLES</h1>
@@ -158,6 +165,8 @@
       </div>
     </div>
   </div>
+  @endcan
+ 
  
 
 

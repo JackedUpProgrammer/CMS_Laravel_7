@@ -58,7 +58,8 @@
                       <td>{{ $post->updated_at->diffForHumans() }}</td>
 
                       <td> 
-                        @can('update', $post)
+                        
+                        @can('viewAdminOrUser', $post)
                       <form method="POST" action="{{ route('post.destroy', $post->id) }}">
                         @csrf
                         @method('DELETE')
@@ -68,7 +69,7 @@
                       </td>
 
                       <td> 
-                        @can('view', $post)
+                        @can('viewAdminOrUser', $post)
                         <form method="POST" action="{{ route('post.edit', $post->id) }}">
                           @csrf
                           @method('GET')
@@ -98,3 +99,5 @@
 @endsection
 
 </x-admin-master>
+
+

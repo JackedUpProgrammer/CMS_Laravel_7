@@ -1,6 +1,6 @@
 <x-admin-master>
 
-  @section('content')
+@section('content')
     <h1 class="h3 mb-0 text-gray-800">ROLES</h1>
 
 
@@ -10,43 +10,44 @@
     </div>
     @endif
 
+    @if (session()->has('updated_role'))
+    <div class="alert alert-success">
+        {{ session('updated_role') }}
+    </div>
+    @endif
 
-  @endsection
+
+@endsection
     
 
-    
-
-  @section('form')
-
+@section('form')
 <div class="row">
-<div class="col-sm-3">
+  <div class="col-sm-3">
 
 
-        <form action="{{ route('roles.store') }}" method="post">
-            @csrf
-            <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" class="form-control" name="name" id="">
-                    <div>
-                      @error('name')
-                              <span><strong>{{ $message }}</strong></span>
-                      @enderror
-               </div>
-             
-            </div>
-            <button class="btn btn-info btn-block" type="submit">Create</button>
-        </form>
+          <form action="{{ route('roles.store') }}" method="post">
+              @csrf
+              <div class="form-group">
+                      <label for="name"  class="h3 mb-0 text-gray-800">Name</label>
+                      <input type="text" class="form-control" name="name" id="">
+                      <div>
+                        @error('name')
+                                <span><strong>{{ $message }}</strong></span>
+                        @enderror
+                </div>
+              
+              </div>
+              <button class="btn btn-info btn-block" type="submit">Create</button>
+          </form>
 
- </div>
+    </div>
 
-
-
-<div class="col-sm-1">
- {{-- just for a gap   --}}
- </div> 
+  <div class="col-sm-1">
+  {{-- just for a gap   --}}
+  </div> 
 
 
-<div class="col-sm-8">
+  <div class="col-sm-8">
 		  <div class="card shadow mb-5 col-sm-9">
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">Roles</h6>
@@ -82,13 +83,12 @@
                       </td>
 
                       <td>
-                        {{-- <form method="POST" action="{{ route('post.edit', $post->id) }}">
+                        <form method="POST" action="{{ route('role.edit', $role->id) }}">
                           @csrf
-                          @method('GET') --}}
+                          @method('GET')
                           <button type="submit" class="btn btn-primary">Edit</button>
-                        {{-- </form>  --}}
-
-                        </td>
+                        </form> 
+                      </td>
                       
                     </tr>
                   @endforeach
@@ -100,8 +100,7 @@
         </div>
 
 </div>
-
-  @endsection
+@endsection
     
     
     

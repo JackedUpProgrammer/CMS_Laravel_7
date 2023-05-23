@@ -30,19 +30,36 @@ class UserPolicy
     public function view(User $user, User $model)
     {
         // 
-        if ($user->userHasRole('admin')){
-            return true;
-        }
-        if ($user->userHasRole('moderator')){
-            return true;
-        }
-        if ($user->userHasRole('manager')){
-            return true;
-        }
-
-        
-
+            return $user->id == $model->id;
+       
     }
+
+
+      /**
+     * Determine whether the user can view the model.
+     *
+     * @param  \App\User  $user
+     * @param  \App\User  $model
+     * @return mixed
+     */
+    public function viewAdminOrUser(User $user, User $model)
+    {
+           if ($user->userHasRole('Admin')){ 
+            return true;}
+            else{
+            return $user->id == $model->id;}
+       
+    }
+
+    
+
+    /** * Determine whether the user can view the model. * *
+     *  @param  \App\User  $user * @param  \App\User  $model * 
+     * @return mixed */ 
+        public function viewAdmin(User $user, User $model) { 
+         if ($user->userHasRole('Admin')){ 
+            return true;}
+         }
 
     /**
      * Determine whether the user can create models.
@@ -65,6 +82,7 @@ class UserPolicy
     public function update(User $user, User $model)
     {
         //
+        return $user->id == $model->id;
     }
 
     /**

@@ -4,6 +4,7 @@ namespace App;
 
 use App\User;
 use App\Permission;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 
 class Role extends Model
@@ -17,4 +18,9 @@ class Role extends Model
     public function users(){
         return $this->belongsToMany(User::class);
     }
+
+    public function setNameAttribute($i){
+        $this->attributes['slug'] = Str::lower($i);
+        $this->attributes['name'] = Str::ucfirst($i);
+      }
 }

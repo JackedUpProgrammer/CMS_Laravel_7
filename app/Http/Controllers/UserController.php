@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Role;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
@@ -28,7 +29,15 @@ class UserController extends Controller
        }
 
        $user->update($inputs);
-       return redirect('/admin/users');
+       $isAdmin = Auth::user()->userHasRole('Admin');
+      
+
+       if ($isAdmin){ 
+        return redirect('/admin/users');
+        } else{
+            return redirect('/admin');
+         }
+
     }
 
     public function index(){
