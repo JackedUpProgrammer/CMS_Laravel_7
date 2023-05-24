@@ -24,6 +24,7 @@ class RoleController extends Controller
             'name'=>Str::ucfirst(request('name')),
             'slug'=>Str::lower(request('name')),
         ]);
+        Session::flash('created_role', 'role was created successfully');
         return back()->with('roles', $roles);
     }
 
@@ -42,10 +43,10 @@ class RoleController extends Controller
 
     
     public function edit(Role $role){
-        $permissions=Permission::all();
         return view('admin.roles.edit',[
             'role'=> $role,
-            'permissions'=>$permissions
+            'permissions'=>Permission::all()
+
         ]); 
     }
 
@@ -59,7 +60,7 @@ class RoleController extends Controller
 
         
          $role->name = $inputs['name']; 
-         $role->slug = $inputs['name']; 
+         $role->slug = $inputs['name']->slug('-'); 
 
         if($role->isDirty('name')){Session::flash('updated_role', 'Role was updated successfully: '. $inputs['name']);}
         else{Session::flash('updated_role', 'Role kept the same');};
@@ -67,5 +68,17 @@ class RoleController extends Controller
         $role->update($inputs);
         return redirect('/admin/roles');
      }
+
+
+
+     public function attach(Role $role){
+        $role->permissions()->attach(request('permission'));
+        return back(); 
+ }
+
+ public function detach(Role $role){
+     $role->permissions()->detach(request('permission'));
+     return back(); 
+}
 
 }

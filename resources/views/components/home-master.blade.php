@@ -26,6 +26,7 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
+      
       <a class="navbar-brand" href="{{ route('home') }}">HOME</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -85,7 +86,7 @@
       <div class="col-md-4">
 
         <!-- Search Widget -->
-        <div class="card my-4">
+        {{-- <div class="card my-4">
           <h5 class="card-header">Search</h5>
           <div class="card-body">
             <div class="input-group">
@@ -95,10 +96,10 @@
               </span>
             </div>
           </div>
-        </div>
+        </div> --}}
 
         <!-- Categories Widget -->
-        <div class="card my-4">
+        {{-- <div class="card my-4">
           <h5 class="card-header">Categories</h5>
           <div class="card-body">
             <div class="row">
@@ -130,15 +131,15 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> --}}
 
         <!-- Side Widget -->
-        <div class="card my-4">
+        {{-- <div class="card my-4">
           <h5 class="card-header">Side Widget</h5>
           <div class="card-body">
             You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
           </div>
-        </div>
+        </div> --}}
 
       </div>
 
@@ -151,7 +152,7 @@
   <!-- Footer -->
   <footer class="py-5 bg-dark">
     <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
+      <p class="m-0 text-center text-white">Copyright &copy; Johan Scheepers 2023</p>
     </div>
     <!-- /.container -->
   </footer>

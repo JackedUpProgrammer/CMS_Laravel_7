@@ -1,7 +1,7 @@
 <x-admin-master>
 
 @section('content')
-    <h1 class="h3 mb-0 text-gray-800">ROLES</h1>
+    <h1 class="h2 mb-0 text-gray-800">ROLES</h1>
 
 
     @if (session()->has('deleted_role'))
@@ -13,6 +13,12 @@
     @if (session()->has('updated_role'))
     <div class="alert alert-success">
         {{ session('updated_role') }}
+    </div>
+    @endif
+
+    @if (session()->has('created_role'))
+    <div class="alert alert-success">
+        {{ session('created_role') }}
     </div>
     @endif
 
@@ -28,7 +34,7 @@
           <form action="{{ route('roles.store') }}" method="post">
               @csrf
               <div class="form-group">
-                      <label for="name"  class="h3 mb-0 text-gray-800">Name</label>
+                      <label for="name"  class="h4 mb-0 text-gray-800">Name</label>
                       <input type="text" class="form-control" name="name" id="">
                       <div>
                         @error('name')

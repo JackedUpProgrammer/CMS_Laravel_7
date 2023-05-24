@@ -20,7 +20,9 @@ class Role extends Model
     }
 
     public function setNameAttribute($i){
-        $this->attributes['slug'] = Str::lower($i);
+        $this->attributes['name'] = (Str::of(Str::lower($i)))->slug('-');
         $this->attributes['name'] = Str::ucfirst($i);
       }
+
+      
 }

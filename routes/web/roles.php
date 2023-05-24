@@ -11,3 +11,7 @@ Route::delete('/roles/{role}/destroy', 'RoleController@destroy')->name('role.des
 Route::get('/roles/{role}/edit', 'RoleController@edit')->name('role.edit');
 
 Route::put('/roles/{role}/update', 'RoleController@update')->name('role.update');
+
+
+Route::put('/roles/{role}/attach', "RoleController@attach")->name('role.permission.attach');
+Route::put('/roles/{role}/detach', "RoleController@detach")->name('role.permission.detach');

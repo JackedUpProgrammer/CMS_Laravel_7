@@ -29,7 +29,7 @@
                 <th>Registered Date</th>
                 <th>Updated Profile Date</th>
                 <th>Delete</th>
-                <th>Edit</th>
+                
                
               </tr>
             </thead>
@@ -56,15 +56,15 @@
                       </form> 
                 </td>
 
-                <td> 
-                  {{-- @can('view', $post)
+                {{-- <td> 
+                  @can('view', $post)
                   <form method="POST" action="{{ route('post.edit', $post->id) }}">
                     @csrf
                     @method('GET')
                     <button type="submit" class="btn btn-primary">Edit</button>
                   </form> 
-                  @endcan --}}
-                  </td>
+                  @endcan
+                  </td> --}}
                   
               </tr>
             @endforeach

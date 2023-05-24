@@ -6,7 +6,7 @@
 
 
 @section('form')
-@can('update', $post)
+{{-- @can('update', $post) --}}
 <form method="POST" action="{{ route('post.store') }}" enctype="multipart/form-data">
     @csrf
     <div class="form-group">
@@ -27,7 +27,7 @@
     <button type="submit" class="btn btn-primary">Submit</button>
 
 </form>
-@endcan
+{{-- @endcan --}}
 @endsection
 
 
